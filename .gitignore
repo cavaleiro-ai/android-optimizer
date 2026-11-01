@@ -1,0 +1,23 @@
+# Arquivos de aparelho: grandes, com licenca propria ou com dados pessoais
+*.img
+*.zip
+*.apk
+*.tar
+*.tgz
+*.br
+*.bin
+*.ab
+build.prop*
+userdata*
+android-optimizer-log.md
+ram-completa.txt
+
+# Resultados de testes
+evals/results/
+*-workspace/
+
+# Sistema e segredos
+.DS_Store
+Thumbs.db
+.env
+*.key
