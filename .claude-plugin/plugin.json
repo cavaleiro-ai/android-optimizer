@@ -1,0 +1,10 @@
+{
+  "name": "android-optimizer",
+  "version": "1.1.0",
+  "description": "Otimiza celulares e tablets Android por ADB e Fastboot, perguntando antes até onde ir: de ajustes reversíveis a troca de ROM, root e overclock. Também instala um emulador de PS1 com o jogo da pessoa.",
+  "author": {
+    "name": "android-optimizer contributors"
+  },
+  "license": "MIT",
+  "keywords": ["android", "adb", "fastboot", "optimization", "custom-rom", "debloat", "ps1", "retroarch", "emulator"]
+}

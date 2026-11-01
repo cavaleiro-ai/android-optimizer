@@ -1,0 +1,14 @@
+{
+  "name": "android-optimizer",
+  "description": "Skill para otimizar celulares e tablets Android com ADB e Fastboot.",
+  "owner": {
+    "name": "android-optimizer contributors"
+  },
+  "plugins": [
+    {
+      "name": "android-optimizer",
+      "source": "./",
+      "description": "Otimiza celulares e tablets Android por ADB e Fastboot, perguntando antes até onde ir, e instala um emulador de PS1 se a pessoa quiser."
+    }
+  ]
+}

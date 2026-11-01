@@ -12,6 +12,23 @@ userdata*
 android-optimizer-log.md
 ram-completa.txt
 
+# Compactados, jogos, BIOS e saves
+*.rar
+*.7z
+*.so
+*.cue
+*.iso
+*.chd
+*.pbp
+*.m3u
+*.ccd
+*.mdf
+*.srm
+*.mcd
+*.state*
+*.lpl
+retroarch*.cfg
+
 # Resultados de testes
 evals/results/
 *-workspace/
