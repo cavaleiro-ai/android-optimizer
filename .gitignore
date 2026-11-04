@@ -29,6 +29,16 @@ ram-completa.txt
 *.lpl
 retroarch*.cfg
 
+# Fotos, videos e relatorios de camera (mostram o ambiente e o aparelho da pessoa)
+*.jpg
+*.jpeg
+*.dng
+*.heic
+*.mp4
+*.3gp
+camera-scan*.txt
+BACKUP_OC_*.xml
+
 # Resultados de testes
 evals/results/
 *-workspace/

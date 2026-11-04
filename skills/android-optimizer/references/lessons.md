@@ -29,6 +29,29 @@ Cada item aconteceu no caso real descrito em `docs/estudo-de-caso-moto-g-2014.md
 | `keyevent 82` com a tela já desbloqueada | Abriu a aba de notificações por cima | Tire uma captura antes de tocar na tela |
 | Quedas do USB em captura de tela | O PNG chegou cortado e não abriu | Confira se o arquivo termina em `IEND` e tire de novo |
 
+## Câmera
+
+Do caso descrito em `docs/estudo-de-caso-camera-moto-g-2014.md`:
+
+| Situação | O que deu errado | O que fazer |
+|---|---|---|
+| HDR por hardware do app original | Travou a câmera por mais de 90 s sem gerar foto | Teste cada modo antes de recomendar e deixe desligado o que travar |
+| Câmera lenta de 90 e 120 fps no menu | Capturavam uns 30 fps: o adaptador de câmera da ROM anunciava modos inexistentes | Conte quadros contra o tempo real antes de prometer fps |
+| Fotos de teste com o celular deitado | A orientação ficou indefinida e as fotos saíram de lado | Teste com o celular de pé ou de lado, apoiado |
+| Qualidade JPEG em 100% | O driver ignorou o pedido, e a tabela de compressão ficou igual à do app original | Confira a tabela de quantização da foto antes de dizer que melhorou |
+| Primeira vez no modo HDR do Open Camera | Uma explicação na tela recebeu o toque do disparo | Toque em OK e repita o disparo |
+| Restore settings do Open Camera | A lista começa com "Parent Folder", e o toque abriu outro arquivo | Leia as posições na tela antes de tocar |
+| `grep` simples na saída do `uiautomator` | Textos e posições ficaram desalinhados | Leia nó por nó, juntando `text` e `bounds` do mesmo elemento |
+| Visitar o menu de vídeo do app original | O app ficou em modo vídeo, e o toque seguinte iniciou uma gravação | Volte o app ao modo foto e confira o ícone antes de disparar |
+| Toque para parar uma gravação | Às vezes não pegou, e o vídeo continuou | Confira se o arquivo terminou (`ffprobe` ou `mp4info.py`) |
+| `pkill -f <script>` pelo `adb shell` | Matou o próprio shell, porque o nome estava na linha de comando | Use `pgrep -f 'nom[e]'` e mate pelo PID |
+| Bibliotecas de recursos instaladas | Carregaram, mas o driver nunca lia as chaves que ligam o recurso | Rode `camera-libs-scan.py refs` antes de instalar |
+| Mudança no driver sem efeito | O processo que carrega o driver (`mediaserver`) guardava a lista antiga | Reinicie também esse processo |
+| Desligar Rooted debugging com `input tap` | A opção não mudou | Use `keyevent 20` até a linha e `keyevent 23`, e confira com `service call adbroot_service 2` |
+| Testar se o root estava bloqueado rodando `adb root` | Com a opção ainda ligada, o ADB voltou a ser root | Confira com `service call adbroot_service 2`, que só lê |
+| Copiar bibliotecas baixadas para o sistema | O Claude Code bloqueou a ação | Não contorne: explique e deixe a pessoa decidir |
+| Exposição forçada | A foto continuou com 1/15 s e ISO 1250 no EXIF | Confie no log do driver (`LINECOUNT`) e no brilho medido |
+
 ## Windows e PowerShell
 
 - Prefira `cmd /c` ou `adb exec-out` para saída binária, porque o redirecionamento do PowerShell 5.1 pode corrompê-la.

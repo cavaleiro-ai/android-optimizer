@@ -8,7 +8,7 @@
     {
       "name": "android-optimizer",
       "source": "./",
-      "description": "Otimiza celulares e tablets Android por ADB e Fastboot, perguntando antes até onde ir, e instala um emulador de PS1 se a pessoa quiser."
+      "description": "Otimiza celulares e tablets Android por ADB e Fastboot, perguntando antes até onde ir, melhora a câmera e instala um emulador de PS1 se a pessoa quiser."
     }
   ]
 }

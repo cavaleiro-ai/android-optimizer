@@ -1,6 +1,6 @@
 ---
 name: android-optimizer
-description: Guia passo a passo para otimizar qualquer celular ou tablet Android conectado por USB com ADB e Fastboot, sempre perguntando antes até onde a pessoa quer ir, desde ajustes reversíveis e remoção de apps até desbloqueio do bootloader, troca de ROM, root, modo desempenho e overclock. Também instala e ajusta um emulador de PlayStation 1 com o jogo da pessoa. Use sempre que alguém pedir para deixar um Android mais rápido, tirar travamentos, limpar bloatware, trocar ou atualizar o sistema, instalar LineageOS ou outra ROM, instalar TWRP, fazer root ou overclock, reaproveitar um celular antigo próprio, ou instalar emulador de PS1, PSX, RetroArch ou um jogo de PlayStation no celular, mesmo sem citar ADB. Use também para "my Android phone is slow", "debloat", "custom ROM", "unlock bootloader" e "PS1 emulator on Android". Não serve para iPhone.
+description: Guia passo a passo para otimizar qualquer celular ou tablet Android conectado por USB com ADB e Fastboot, sempre perguntando antes até onde a pessoa quer ir, desde ajustes reversíveis e remoção de apps até desbloqueio do bootloader, troca de ROM, root, modo desempenho e overclock. Também melhora a câmera (varredura do hardware, app de câmera, vídeo, filtros, recursos ocultos e foto noturna) e instala um emulador de PlayStation 1 com o jogo da pessoa. Use sempre que alguém pedir para deixar um Android mais rápido, tirar travamentos, limpar bloatware, trocar ou atualizar o sistema, instalar LineageOS, TWRP, root ou overclock, reaproveitar um celular antigo próprio, melhorar a câmera, a foto noturna ou o vídeo, pôr filtros, ou instalar emulador de PS1, mesmo sem citar ADB. Use também para "my Android phone is slow", "debloat", "custom ROM", "improve Android camera" e "PS1 emulator on Android". Não serve para iPhone.
 ---
 
 # Android Optimizer
@@ -53,8 +53,9 @@ Use a ferramenta de perguntas do agente, se houver; caso contrário, pergunte em
    - **Sim, o mais estável possível**, mesmo sendo mais antigo.
 4. **Dados e uso:** há algo a salvar? O aparelho continuará sendo usado para banco, trabalho ou chip principal? Se for trocar o sistema, quer apps do Google?
 5. **Quer também um emulador de PlayStation 1?** Não, ou sim, e nesse caso onde está o arquivo do jogo, se vai usar botões na tela ou controle físico, e se tem uma BIOS extraída do próprio console.
+6. **Quer melhorar a câmera?** Não, ou sim, e nesse caso o que mais incomoda (pouca luz, vídeo, câmera lenta, filtros) e até onde ir: só apps, recursos ocultos do driver ou arquivos do sistema com root.
 
-**Se o pedido for só o emulador,** não exija os níveis de otimização: pergunte uma vez se quer otimizar também, faça as perguntas de [references/ps1-emulator.md](references/ps1-emulator.md) e confirme que o aparelho é da pessoa. Depois, se ela não quiser otimizar, faça o passo 2, rode só `scripts/diagnose.sh` do passo 3 e siga direto para a referência do emulador, que tem a própria medição e o próprio relatório: pule o resto dos passos 3 a 6. O emulador não precisa de root, desbloqueio nem troca de sistema.
+**Se o pedido for só o emulador ou só a câmera,** não exija os níveis de otimização: pergunte uma vez se quer otimizar também, faça as perguntas da referência ([references/ps1-emulator.md](references/ps1-emulator.md) ou [references/camera.md](references/camera.md)) e confirme que o aparelho é da pessoa. Depois, se ela não quiser otimizar, faça o passo 2, rode só `scripts/diagnose.sh` do passo 3 e siga direto para a referência, que tem a própria medição e o próprio relatório: pule o resto dos passos 3 a 6. O emulador não precisa de root, desbloqueio nem troca de sistema. A câmera só precisa de root no último nível, e então valem as confirmações específicas do passo 4.
 
 Se a resposta incluir trocar o sistema, root ou kernel, avise antes de continuar que pode apagar tudo, perder a garantia, afetar apps de banco e deixar o aparelho sem ligar. Em Samsung, avise também que o desbloqueio queima o Knox de forma permanente e usa Odin ou Heimdall, não Fastboot.
 
@@ -75,7 +76,7 @@ Ainda sem mudar configurações. Os scripts só criam arquivos temporários, que
 
 ## Passo 4: executar por etapas
 
-Siga esta ordem, pulando o que não foi escolhido, e pare ao chegar ao nível definido. O emulador só depende de a pessoa ter pedido, qualquer que seja o nível. Leia só a referência da etapa atual:
+Siga esta ordem, pulando o que não foi escolhido, e pare ao chegar ao nível definido. O emulador e a câmera só dependem de a pessoa ter pedido, qualquer que seja o nível; as partes da câmera que exigem root seguem o nível escolhido. Leia só a referência da etapa atual:
 
 | # | Etapa | Referência | Precisa de confirmação específica para |
 |---|---|---|---|
@@ -85,10 +86,11 @@ Siga esta ordem, pulando o que não foi escolhido, e pare ao chegar ao nível de
 | 4 | Ajustes reversíveis | [references/tweaks.md](references/tweaks.md) | Ajustes que desligam funções usadas |
 | 5 | Limpeza de apps | [references/apps.md](references/apps.md) | A lista de apps |
 | 6 | Emulador de PS1 | [references/ps1-emulator.md](references/ps1-emulator.md) | Instalar o app e apagar saves ou o jogo |
-| 7 | Root e modo desempenho | [references/root-and-kernel.md](references/root-and-kernel.md) | Instalar root e cada mudança de CPU/GPU |
-| 8 | Kernel e overclock | [references/root-and-kernel.md](references/root-and-kernel.md) | Cada kernel e cada faixa de frequência |
+| 7 | Câmera | [references/camera.md](references/camera.md) | Instalar apps, ligar recursos ocultos e qualquer arquivo de sistema |
+| 8 | Root e modo desempenho | [references/root-and-kernel.md](references/root-and-kernel.md) | Instalar root e cada mudança de CPU/GPU |
+| 9 | Kernel e overclock | [references/root-and-kernel.md](references/root-and-kernel.md) | Cada kernel e cada faixa de frequência |
 
-A ordem importa: **salve os dados antes de desbloquear**, porque o desbloqueio costuma apagar tudo, e **troque o sistema antes de otimizar**, porque ajustes, limpeza e emulador se perdem na troca. Confira [references/lessons.md](references/lessons.md) antes de escrever comandos, pois lá estão falhas reais a evitar.
+A ordem importa: **salve os dados antes de desbloquear**, porque o desbloqueio costuma apagar tudo, e **troque o sistema antes de otimizar**, porque ajustes, limpeza, emulador e apps de câmera se perdem na troca. Confira [references/lessons.md](references/lessons.md) antes de escrever comandos, pois lá estão falhas reais a evitar.
 
 Antes de cada ação destrutiva, diga:
 
